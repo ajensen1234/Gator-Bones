@@ -1,13 +1,20 @@
-# Lightning JTML (LitJTML)
+# Lightning Segmentation
 
-### This repo is for moving our JTML neural network code to PyTorch Lightning and using WandB logging.
+### This repo is for practicing using our workflow.
 
 
 
 ## Setup:
 
-1. Create the conda environment `lit-jtml-env` from the `environment.yml` using the command `conda create env create -f environment.yml`.
-2. Activate the conda env with `conda activate lit-jtml-env`.
+### Conda environment
+
+1. Create the conda environment `jtml` from the `environment.yml` using the command `conda create env create -f environment.yml`.
+2. Activate the conda env with `conda activate jtml`.
+3. There may be other dependencies that you can install using conda or pip3.
+
+### [WandB](https://wandb.ai/) - our logging system.
+
+1. Create an account from the website and send the email you used to Sasank (to get invited to the Wandb team).
 
 ## Use:
 
