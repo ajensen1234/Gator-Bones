@@ -47,6 +47,7 @@ class Configuration:
         }
 
         self.datamodule = {
+            # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
             'IMAGE_DIRECTORY': '/path/to/image/directory',
             'CKPT_FILE': None,  # used when loading model from a checkpoint
