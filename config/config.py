@@ -7,17 +7,9 @@ import os
 
 class Configuration:
     def __init__(self):
-        """
-        self.temp = {
-            'train_data': '/home/sasank/Documents/GitRepos/Sasank_JTML_seg/data/3_2_22_fem/train_3_2_22_fem.csv',
-            'val_data': '/home/sasank/Documents/GitRepos/Sasank_JTML_seg/data/3_2_22_fem/val_3_2_22_fem.csv',
-            'test_data': '/home/sasank/Documents/GitRepos/Sasank_JTML_seg/data/3_2_22_fem/test_3_2_22_fem.csv'
-        }
-        """
         self.init = {
-            'PROJECT_NAME': 'LitJTML Development!',
-            'MODEL_NAME': 'ETL_test',
-            #'RUN_NAME': 'Setting Up Wandb Logging!',
+            'PROJECT_NAME': 'Segmentation Trial',
+            'MODEL_NAME': 'MyModel',
             'RUN_NAME': time.strftime('%Y-%m-%d-%H-%M-%S'),
             'WANDB_RUN_GROUP': 'Local',
             'FAST_DEV_RUN': True,  # Runs inputted batches (True->1) and disables logging and some callbacks
@@ -26,7 +18,8 @@ class Configuration:
             'STRATEGY': None    # This is the training strategy. Should be 'ddp' for multi-GPU (like HPG)
         }
         self.etl = {
-            'RAW_DATA_FILE': -1,
+            'RAW_DATA_FILE': -1,    # -1 means it will create a full data csv from the image directory, using all images in the image directory
+            #'RAW_DATA_FILE': 'my_data.csv',
             'DATA_DIR': "data",
             'VAL_SIZE':  0.2,       # looks sus
             'TEST_SIZE': 0.01,      # I'm not sure these two mean what we think
@@ -41,7 +34,7 @@ class Configuration:
         self.dataset = {
             'IMAGE_HEIGHT': 1024,
             'IMAGE_WIDTH': 1024,
-            'MODEL_TYPE': 'fem',        # how should we do this? not clear this is still best...
+            'MODEL_TYPE': 'fem',        # specifies that it's a femur model. how should we do this? not clear this is still best...
             'CLASS_LABELS': {0: 'bone', 1: 'background'},
             'IMG_CHANNELS': 1,      # Is this differnt from self.module['NUM_IMAGE_CHANNELS']
             'IMAGE_THRESHOLD': 0,
@@ -54,11 +47,12 @@ class Configuration:
         }
 
         self.datamodule = {
-            'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
-            'CKPT_FILE': None,
+            #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
+            'IMAGE_DIRECTORY': '/path/to/image/directory',
+            'CKPT_FILE': None,  # used when loading model from a checkpoint
             'BATCH_SIZE': 1,
             'SHUFFLE': True,        # Only for training, for test and val this is set in the datamodule script to False
-            'NUM_WORKERS': os.cpu_count(),
+            'NUM_WORKERS': os.cpu_count(),   # This number seems fine for local but on HPG, we have so many cores that a number like 4 seems better.
             'PIN_MEMORY': False,
             'SUBSET_PIXELS': True
         }

@@ -1,15 +1,9 @@
-# let's try summ out
-
-
 import torch
 import torch.nn as nn
 import numpy as np
 
 import pytorch_lightning as pl
 import wandb
-
-import time
-import nvtx
 
 from pose_hrnet_modded_in_notebook import PoseHighResolutionNet
 
@@ -47,7 +41,6 @@ class SegmentationNetModule(pl.LightningModule):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
         return optimizer
 
-    @nvtx.annotate("Training step", color="red", domain="my_domain")
     def training_step(self, train_batch, batch_idx):
         training_batch, training_batch_labels = train_batch['image'], train_batch['label']
         x = training_batch
@@ -60,7 +53,6 @@ class SegmentationNetModule(pl.LightningModule):
         #self.log(name="train/loss", value=loss)
         return loss
 
-    @nvtx.annotate("Validation step", color="green", domain="my_domain")
     def validation_step(self, validation_batch, batch_idx):
         val_batch, val_batch_labels = validation_batch['image'], validation_batch['label']
         x = val_batch
@@ -75,7 +67,6 @@ class SegmentationNetModule(pl.LightningModule):
         self.wandb_run.log({'val_output': image})
         return loss
 
-    @nvtx.annotate("Test step", color="blue", domain="my_domain")
     def test_step(self, test_batch, batch_idx):
         test_batch, test_batch_labels = test_batch['image'], test_batch['label']
         x = test_batch
@@ -88,25 +79,3 @@ class SegmentationNetModule(pl.LightningModule):
         #self.on_test_batch_end(outputs=test_output, batch=test_batch, batch_idx=batch_idx, dataloader_idx=0)
         return loss
     
-
-    #def on_test_batch_end(self, trainer: "pl.Trainer", pl_module: "pl.LightningModule", outputs, batch, batch_idx: int, dataloader_idx) -> None:
-    """
-    def on_test_batch_end(self, outputs, batch, batch_idx: int, dataloader_idx, **kwargs) -> None:
-        print(outputs.size())
-        for image in outputs:
-            image = self.wandb.Image(image, caption='Test output from batch ' + str(batch_idx))
-            self.wandb_run.log({'test_output': image})
-        #return super().on_test_batch_end(trainer, pl_module, batch, batch_idx)
-        #return super().on_test_batch_end(batch, batch_idx)
-    """
-
-"""
-    def train_dataloader(self):
-        return
-
-    def val_dataloader(self):
-        return
-"""
-
-    # def backward():
-    # def optimizer_step():
