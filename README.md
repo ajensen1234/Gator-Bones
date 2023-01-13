@@ -8,7 +8,7 @@
 
 ### Conda environment
 
-1. [Create](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) the conda environment `jtml` from the `environment.yml` using the command `conda create env create -f environment.yml`.
+1. [Create](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) the conda environment `jtml` from the `environment.yml` using the command `conda env create -f environment.yml`.
 2. Activate the conda env with `conda activate jtml`.
 3. There may be other dependencies that you can install using conda or pip3.
 
