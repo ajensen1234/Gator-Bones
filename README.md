@@ -26,6 +26,8 @@ If you have an NVIDIA graphics card, please install [CUDA](https://nvidia.custhe
 
 Large data is in the Files section of the Microsoft Teams team. Please copy these files/folders locally. This includes the image folder of X-ray images and segmentation masks (you need to unzip this folder) and the .ckpt model checkpoint file needed for loading a pretrained model for testing.
 
+After you download these files/folders locally, remember to edit the config file (in config/config.py) to specify the location of your local image directory and checkpoint file.
+
 ## Use:
 
 1. Be in the LitJTML directory (use the `cd` command to change the directory to the `blah/blah/LitJTML/` directory).
