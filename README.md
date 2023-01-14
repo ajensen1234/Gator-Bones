@@ -18,6 +18,10 @@
 
 1. Create an account from the website and send the email you used to Sasank (to get invited to the Wandb team).
 
+### CUDA (Optional)
+
+If you have an NVIDIA graphics card, please install [CUDA](https://nvidia.custhelp.com/app/answers/detail/a_id/2136/~/how-to-install-cuda). This will allow you to use your GPU for training, which is useful when running a couple batches during development to ensure the code runs.
+
 ## Use:
 
 1. Be in the LitJTML directory (use the `cd` command to change the directory to the `blah/blah/LitJTML/` directory).
