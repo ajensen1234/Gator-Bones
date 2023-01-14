@@ -22,6 +22,10 @@
 
 If you have an NVIDIA graphics card, please install [CUDA](https://nvidia.custhelp.com/app/answers/detail/a_id/2136/~/how-to-install-cuda). This will allow you to use your GPU for training, which is useful when running a couple batches during development to ensure the code runs.
 
+## Data:
+
+Large data is in the Files section of the Microsoft Teams team. Please copy these files/folders locally. This includes the image folder of X-ray images and segmentation masks (you need to unzip this folder) and the .ckpt model checkpoint file needed for loading a pretrained model for testing.
+
 ## Use:
 
 1. Be in the LitJTML directory (use the `cd` command to change the directory to the `blah/blah/LitJTML/` directory).
