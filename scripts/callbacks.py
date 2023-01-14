@@ -24,16 +24,6 @@ class JTMLCallback(Callback):
     *********************** Init ***********************
     """
 
-    # TODO: This hook will be deprecated in v1.8 ! What do?
-    def on_init_start(self, trainer: "pl.Trainer") -> None:
-        print('\n' + 20 * '*' + "  Starting Initialization!  " + 20 * '*' + '\n')
-        #self.wandb_logger.info(f"*********************** alshdfahsdfhasfdhl *****************")
-
-    # TODO: This hook will be deprecated in v1.8 ! What do?
-    def on_init_end(self, trainer: "pl.Trainer") -> None:
-        print('\n' + 20 * '*' + "  Finished Initialization!  " + 20 * '*' + '\n')
-        return super().on_init_end(trainer)
-
     """
     *********************** Fit ***********************
     """

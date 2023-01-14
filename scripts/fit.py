@@ -47,8 +47,11 @@ def main(config, wandb_run):
 
     # Our trainer object contains a lot of important info.
     trainer = pl.Trainer(
+        # If the below line is an error, change it to cpu and 1 device
         accelerator='gpu',
+        # accelerator='cpu',
         devices=-1,     # use all available devices (GPUs)
+        # devices=1,
         auto_select_gpus=True,  # helps use all GPUs, not quite understood...
         #logger=wandb_logger,   # tried to use a WandbLogger object. Hasn't worked...
         default_root_dir=os.getcwd(),
