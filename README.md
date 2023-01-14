@@ -8,9 +8,11 @@
 
 ### Conda environment
 
-1. [Create](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) the conda environment `jtml` from the `environment.yml` using the command `conda env create -f environment.yml`.
-2. Activate the conda env with `conda activate jtml`.
-3. There may be other dependencies that you can install using conda or pip3.
+1. Install Anaconda package manager with Python version 3.9 from [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (recommended because of small size) or [full Anaconda](https://docs.anaconda.com/anaconda/install/index.html) (includes graphical user interface for package management).
+2. Verify that the pip3 (Python 3's official package manager) is installed by entering `pip3 -v` in the terminal. If it is not installed, install it, perhaps using [this tutorial](https://www.activestate.com/resources/quick-reads/how-to-install-and-use-pip3/).
+3. [Create](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) the conda environment `jtml` from the `environment.yml` using the command `conda env create -f environment.yml`.
+4. Activate the conda env with `conda activate jtml`.
+5. There may be other dependencies that you can install using conda or pip3.
 
 ### [WandB](https://wandb.ai/) - our logging system.
 
