@@ -52,11 +52,13 @@ class JTMLCallback(Callback):
 
     def on_train_epoch_start(self, trainer: "pl.Trainer", pl_module: "pl.LightningModule") -> None:
         print('\n' + 20 * '*' + f'Starting train epoch {pl_module.current_epoch}!' + 20 * '*' + '\n')
-        return super().on_epoch_start(trainer, pl_module)
+        #return super().on_epoch_start(trainer, pl_module)
+        return
 
     def on_train_epoch_end(self, trainer: "pl.Trainer", pl_module: "pl.LightningModule") -> None:
         print('\n' + 20 * '*' + f'Finished train epoch {pl_module.current_epoch}!' + 20 * '*' + '\n')
-        return super().on_epoch_end(trainer, pl_module)
+        #return super().on_epoch_end(trainer, pl_module)
+        return
 
     """
     def on_train_batch_start(self, trainer: "pl.Trainer", pl_module: "pl.LightningModule") -> None:

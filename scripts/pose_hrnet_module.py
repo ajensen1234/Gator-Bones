@@ -19,6 +19,7 @@ class SegmentationNetModule(pl.LightningModule):
         print("Pose HRNet is on device " + str(next(self.pose_hrnet.parameters()).get_device()))     # testing line
         print("Is Pose HRNet on GPU? " + str(next(self.pose_hrnet.parameters()).is_cuda))            # testing line
         self.pose_hrnet.to(device='cuda', dtype=torch.float32)                          # added recently and may fix a lot
+        # *** IF the above line causes an error because you do not have CUDA, then just comment it out and the model should run, albeit on the CPU ***
         print("Pose HRNet is on device " + str(next(self.pose_hrnet.parameters()).get_device()))     # testing line
         print("Is Pose HRNet on GPU? " + str(next(self.pose_hrnet.parameters()).is_cuda))            # testing line
         self.wandb_run = wandb_run
