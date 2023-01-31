@@ -49,15 +49,23 @@ class Configuration:
         self.datamodule = {
             # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
-            'IMAGE_DIRECTORY': '/path/to/image/directory',
+            'IMAGE_DIRECTORY': '../TPLO_Ten_Dogs_grids/TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
             # *** CHANGE THE CHECKPOINT PATH TO YOUR OWN FOR TESTING ***
-            #'CKPT_FILE': 'path/to/ckpt/file.ckpt',  # used when loading model from a checkpoint
-            'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
+            'CKPT_FILE': '../TPLO_Ten_Dogs_grids/TestModel.ckpt',  # used when loading model from a checkpoint
+            # 'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
             'BATCH_SIZE': 1,
             'SHUFFLE': True,        # Only for training, for test and val this is set in the datamodule script to False
             'NUM_WORKERS': os.cpu_count(),   # This number seems fine for local but on HPG, we have so many cores that a number like 4 seems better.
             'PIN_MEMORY': False,
             'SUBSET_PIXELS': True
+        }
+
+        self.model = {
+            'BACKBONE': 'hrnet', # TODO: oneof(hrnet, hrt, resnet, swin, vit).
+            'OPTIMIZER': 'adam', # TODO: Specify selections
+            'FORWARDING_FUNC': 'default', # Top-level forwarding function. oneof(default, swin, more soon). 
+                                          # Make sure forwarding function makes sense with selected architecture.
+                                          # Can add custom in [new name of pose_hrnet_module]
         }
 
 
