@@ -11,7 +11,7 @@ import torch
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
-from pose_hrnet_module import SegmentationNetModule, PoseHighResolutionNet
+from segmentation_net_module import SegmentationNetModule
 from datamodule import SegmentationDataModule
 from callbacks import JTMLCallback
 from utility import create_config_dict
@@ -60,11 +60,11 @@ def main(config, wandb_run):
     # Our trainer object contains a lot of important info.
     trainer = pl.Trainer(
         # If the below line gives an error because you don't have a GPU, then comment it out and uncomment the line after it which uses the CPU.
-        accelerator='gpu',
-        # accelerator='cpu',
-        devices=-1,     # use all available devices (GPUs)
+        # accelerator='gpu',
+        accelerator='cpu',
+        devices=1,     # use all available devices (GPUs)
         # Probably comment out the below line if you're using your CPU.
-        auto_select_gpus=True,  # helps use all GPUs, not quite understood...
+        # auto_select_gpus=True,  # helps use all GPUs, not quite understood...
         #logger=wandb_logger,
         default_root_dir=os.getcwd(),
         callbacks=[JTMLCallback(config, wandb_run)],    # pass in the callbacks we want

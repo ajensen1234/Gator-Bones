@@ -46,6 +46,11 @@ class Configuration:
                 'NUM_IMG_CHANNELS': self.dataset['IMG_CHANNELS']
         }
 
+        self.model = {
+            'FEATURE_EXTRACTOR': '', # See models/feature_extractors
+            'HEAD': 'pose_hrnet', # See models/nets
+        }
+
         self.datamodule = {
             # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
@@ -59,15 +64,6 @@ class Configuration:
             'PIN_MEMORY': False,
             'SUBSET_PIXELS': True
         }
-
-        self.model = {
-            'BACKBONE': 'hrnet', # TODO: oneof(hrnet, hrt, resnet, swin, vit).
-            'OPTIMIZER': 'adam', # TODO: Specify selections
-            'FORWARDING_FUNC': 'default', # Top-level forwarding function. oneof(default, swin, more soon). 
-                                          # Make sure forwarding function makes sense with selected architecture.
-                                          # Can add custom in [new name of pose_hrnet_module]
-        }
-
 
         # hyperparameters for training
         self.hparams = {
