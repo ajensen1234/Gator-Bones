@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from feature_extractors.extractor_selector import ExtractorSelector
+from models.feature_extractors.extractor_selector import ExtractorSelector
 
 
 class PoseHRNet(nn.Module):

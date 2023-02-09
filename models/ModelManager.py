@@ -5,9 +5,11 @@ from __future__ import print_function
 import torch
 
 from nets.pose_hrnet import PoseHRNet
+from nets.swin_unetr import Swin_UNETR
 
 SEG_MODEL_DICT = {
-    "pose_hrnet": PoseHRNet
+    "pose_hrnet": PoseHRNet,
+    "swin_unetr": Swin_UNETR
 }
 
 

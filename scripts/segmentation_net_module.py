@@ -14,7 +14,7 @@ class SegmentationNetModule(pl.LightningModule):
         self.config = config
 
         sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'models')) # import models relative path
-        from ModelManager import ModelManager
+        from models.ModelManager import ModelManager
         self.model_manager = ModelManager(config)
 
         self.seg_net = self.model_manager.get_segmentor()
