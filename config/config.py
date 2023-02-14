@@ -47,7 +47,6 @@ class Configuration:
         }
 
         self.model = {
-            'FEATURE_EXTRACTOR': '', # See models/feature_extractors
             'HEAD': 'pose_hrnet', # See models/nets
         }
 
