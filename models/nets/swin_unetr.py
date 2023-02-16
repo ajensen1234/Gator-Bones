@@ -1,5 +1,5 @@
 import torch.nn as nn
-from models.feature_extractors.extractor_selector import ExtractorSelector
+from feature_extractors.extractor_selector import ExtractorSelector
 
 
 class Swin_UNETR(nn.Module):

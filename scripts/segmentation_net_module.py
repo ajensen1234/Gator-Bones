@@ -13,8 +13,10 @@ class SegmentationNetModule(pl.LightningModule):
         self.save_hyperparameters("learning_rate")
         self.config = config
 
-        sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'models')) # import models relative path
-        from models.ModelManager import ModelManager
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'models'))
+        print(sys.path)
+	 #import models relative path
+        from ModelManager import ModelManager
         self.model_manager = ModelManager(config)
 
         self.seg_net = self.model_manager.get_segmentor()

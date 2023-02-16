@@ -2,8 +2,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from models.feature_extractors.pose_hrnet_backbone import PoseHRNetBackBone
-from models.feature_extractors.swin_unetr_backbone import SwinUNETR_backbone
+from feature_extractors.pose_hrnet_backbone import PoseHRNetBackBone
+from feature_extractors.swin_unetr_backbone import SwinUNETR_backbone
 
 
 class ExtractorSelector(object):

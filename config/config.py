@@ -62,7 +62,8 @@ class Configuration:
         self.datamodule = {
             # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
-            'IMAGE_DIRECTORY': '../TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
+            #'IMAGE_DIRECTORY': '../TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
+            'IMAGE_DIRECTORY': '/blue/banks/justin.broce/Gator-Bones/data/TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
             # *** CHANGE THE CHECKPOINT PATH TO YOUR OWN FOR TESTING ***
             'CKPT_FILE': '../TPLO_Ten_Dogs_grids/TestModel.ckpt',  # used when loading model from a checkpoint
             # 'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
