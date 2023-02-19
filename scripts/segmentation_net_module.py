@@ -32,7 +32,8 @@ class SegmentationNetModule(pl.LightningModule):
         print("Net on GPU? " + str(next(self.seg_net.parameters()).is_cuda))            # testing line
 
         self.wandb_run = wandb_run
-        self.loss_fn = monai.losses.DiceLoss(sigmoid=True)
+        self.loss_fn = self.config.model['LOSS']
+        # self.loss_fn = monai.losses.DiceLoss(sigmoid=True)
         #print(self.pose_hrnet.get_device())
 
    

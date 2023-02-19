@@ -55,15 +55,16 @@ class Configuration:
         }
 
         self.model = {
-            'FEATURE_EXTRACTOR': 'swin_unetr', # See models/feature_extractors
-            'HEAD': "swin_unetr", # See models/nets
+            'FEATURE_EXTRACTOR': 'pose_hrnet', # See models/feature_extractors
+            'HEAD': "pose_hrnet", # See models/nets
+            'LOSS': nn.BCEWithLogitsLoss(), # monai.losses.DiceLoss(sigmoid=True)
         }
 
         self.datamodule = {
             # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
             #'IMAGE_DIRECTORY': '../TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
-            'IMAGE_DIRECTORY': '/red/ruogu.fang/jbroce/TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
+            'IMAGE_DIRECTORY': 'D:\TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
             # *** CHANGE THE CHECKPOINT PATH TO YOUR OWN FOR TESTING ***
             'CKPT_FILE': '../TPLO_Ten_Dogs_grids/TestModel.ckpt',  # used when loading model from a checkpoint
             # 'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
