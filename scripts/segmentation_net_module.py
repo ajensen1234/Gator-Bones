@@ -56,7 +56,10 @@ class SegmentationNetModule(pl.LightningModule):
         training_batch, training_batch_labels = train_batch['image'], train_batch['label']
         x = training_batch
         #print("Training batch is on device " + str(x.get_device()))         # testing line
-        training_output = self.seg_net(x)
+        #training_output = self.seg_net(x)
+        roi_size = (512, 512)
+        sw_batch_size = 4
+        training_output = sliding_window_inference(x, roi_size, sw_batch_size, self)
         loss = self.loss_fn(training_output, training_batch_labels)
         #self.log('exp_train/loss', loss, on_step=True)
         #self.wandb_run.log('train/loss', loss, on_step=True)
@@ -84,7 +87,11 @@ class SegmentationNetModule(pl.LightningModule):
     def test_step(self, test_batch, batch_idx):
         test_batch, test_batch_labels = test_batch['image'], test_batch['label']
         x = test_batch
-        test_output = self.seg_net(x)
+        #test_output = self.seg_net(x)
+        roi_size = (512, 512)
+        sw_batch_size = 4
+        test_output = sliding_window_inference(x, roi_size, sw_batch_size, self)
+        loss = self.loss_fn(val_output, val_batch_labels)
         loss = self.loss_fn(test_output, test_batch_labels)
         #self.log('test/loss', loss)
         #self.wandb_run.log('test/loss', loss, on_step=True)
