@@ -278,12 +278,12 @@ blocks_dict = {
     'BOTTLENECK': Bottleneck
 }
 
-class PoseHighResolutionNet(nn.Module):
+class PoseHRNetBackBone(nn.Module):
 
     def __init__(self, num_key_points, num_image_channels, **kwargs):
         self.inplanes = 64
         #extra = cfg.MODEL.EXTRA
-        super(PoseHighResolutionNet, self).__init__()
+        super(PoseHRNetBackBone, self).__init__()
 
         # stem net
         self.conv1 = nn.Conv2d(num_image_channels, 64, kernel_size=3, stride=2, padding=1,
