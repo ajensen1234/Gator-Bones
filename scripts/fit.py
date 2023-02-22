@@ -7,7 +7,7 @@ Sasank Desaraju
 from datetime import datetime
 from importlib import import_module
 from unicodedata import name
-#import torch
+import torch
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
@@ -26,6 +26,8 @@ import wandb
 The main function contains the neural network-related code.
 """
 def main(config, wandb_run):
+    print("Is cuda available?")
+    print(torch.cuda.is_available())
 
     # The DataModule object loads the data from CSVs, calls the JTMLDataset to get data, and creates the dataloaders.
     data_module = SegmentationDataModule(config=config)

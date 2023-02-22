@@ -1,0 +1,35 @@
+Wed Feb 22 15:39:50 EST 2023
+c1000a-s11.ufhpc
+/blue/banks/zachary.gerbi/Gator-Bones
+GPU Driver '470' detected
+wandb: Currently logged in as: zachary-gerbi. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.13.10
+wandb: Run data is saved locally in /blue/banks/zachary.gerbi/Gator-Bones/wandb/run-20230222_154003-7txj3zz4
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 2023-02-22-15-40-02
+wandb: ⭐️ View project at https://wandb.ai/zachary-gerbi/Segmentation%20Trial
+wandb: 🚀 View run at https://wandb.ai/zachary-gerbi/Segmentation%20Trial/runs/7txj3zz4
+['/blue/banks/zachary.gerbi/Gator-Bones/scripts', '/home/zachary.gerbi/.conda/envs/test/lib/python310.zip', '/home/zachary.gerbi/.conda/envs/test/lib/python3.10', '/home/zachary.gerbi/.conda/envs/test/lib/python3.10/lib-dynload', '/home/zachary.gerbi/.conda/envs/test/lib/python3.10/site-packages', '/scratch/local/58045916/tmpo1zxblua', '/blue/banks/zachary.gerbi/Gator-Bones/config/', '/blue/banks/zachary.gerbi/Gator-Bones/scripts/../models']
+Type of net selected: swin_unetr
+Net is on device -1
+Is this net on GPU? False
+Net is on device -1
+Net on GPU? False
+Traceback (most recent call last):
+  File "/blue/banks/zachary.gerbi/Gator-Bones/scripts/fit.py", line 108, in <module>
+    main(config, wandb_run)
+  File "/blue/banks/zachary.gerbi/Gator-Bones/scripts/fit.py", line 49, in main
+    trainer = pl.Trainer(
+  File "/home/zachary.gerbi/.conda/envs/test/lib/python3.10/site-packages/pytorch_lightning/utilities/argparse.py", line 348, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/zachary.gerbi/.conda/envs/test/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 420, in __init__
+    self._accelerator_connector = AcceleratorConnector(
+  File "/home/zachary.gerbi/.conda/envs/test/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 202, in __init__
+    self._accelerator_flag = self._choose_gpu_accelerator_backend()
+  File "/home/zachary.gerbi/.conda/envs/test/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 545, in _choose_gpu_accelerator_backend
+    raise MisconfigurationException("No supported gpu backend found!")
+lightning_fabric.utilities.exceptions.MisconfigurationException: No supported gpu backend found!
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.015 MB of 0.015 MB uploaded (0.000 MB deduped)wandb: \ 0.015 MB of 0.015 MB uploaded (0.000 MB deduped)wandb: | 0.015 MB of 0.015 MB uploaded (0.000 MB deduped)wandb: / 0.015 MB of 0.015 MB uploaded (0.000 MB deduped)wandb: - 0.015 MB of 0.015 MB uploaded (0.000 MB deduped)wandb: \ 0.015 MB of 0.015 MB uploaded (0.000 MB deduped)wandb: 🚀 View run 2023-02-22-15-40-02 at: https://wandb.ai/zachary-gerbi/Segmentation%20Trial/runs/7txj3zz4
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230222_154003-7txj3zz4/logs
