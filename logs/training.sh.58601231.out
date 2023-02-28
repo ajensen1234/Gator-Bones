@@ -1,0 +1,59 @@
+Tue Feb 28 13:18:42 EST 2023
+c0800a-s17.ufhpc
+/blue/banks/zachary.gerbi/Gator-Bones
+wandb: Currently logged in as: zachary-gerbi. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.13.10
+wandb: Run data is saved locally in /blue/banks/zachary.gerbi/Gator-Bones/wandb/run-20230228_131905-0z0hu0n9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 2023-02-28-13-19-03
+wandb: ⭐️ View project at https://wandb.ai/zachary-gerbi/Segmentation%20Trial
+wandb: 🚀 View run at https://wandb.ai/zachary-gerbi/Segmentation%20Trial/runs/0z0hu0n9
+The Trainer argument `auto_select_gpus` has been deprecated in v1.9.0 and will be removed in v2.0.0. Please use the function `pytorch_lightning.accelerators.find_usable_cuda_devices` instead.
+Auto select gpus: [0, 1]
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+Is cuda available?
+True
+['/blue/banks/zachary.gerbi/Gator-Bones/scripts', '/home/zachary.gerbi/.conda/envs/hpg/lib/python39.zip', '/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9', '/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9/lib-dynload', '/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9/site-packages', '/scratch/local/58601231/tmpq3b_etbw', '/blue/banks/zachary.gerbi/Gator-Bones/config/', '/blue/banks/zachary.gerbi/Gator-Bones/scripts/../models']
+Type of net selected: swin_unetr
+Net is on device -1
+Is this net on GPU? False
+Net is on device 0
+Net on GPU? True
+2023-02-28 13:19:12,487 - Added key: store_based_barrier_key:1 to store for rank: 0
+2023-02-28 13:19:12,487 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+You are using a CUDA device ('NVIDIA A100-SXM4-80GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [3,6]
+
+  | Name    | Type       | Params
+---------------------------------------
+0 | seg_net | Swin_UNETR | 6.3 M 
+1 | loss_fn | DiceLoss   | 0     
+---------------------------------------
+6.3 M     Trainable params
+0         Non-trainable params
+6.3 M     Total params
+25.209    Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+********************  Starting Fitting!  ********************
+Sanity Checking: 0it [00:00, ?it/s]
+********************  Starting Validation!  ********************
+
+Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:12<00:12, 12.46s/it]Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:26<00:00, 13.45s/it]
+********************  Finished Validation!  ********************
+
+***************Min Validation Loss is 0.9133871793746948
+                                                                           ********************  Starting Training!  ********************
+Training: 0it [00:00, ?it/s]
+********************Starting train epoch 0!********************
+
+Training:   0%|          | 0/129 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/129 [00:00<?, ?it/s] [W reducer.cpp:1298] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+Epoch 0:   1%|          | 1/129 [00:57<2:03:28, 57.88s/it]Epoch 0:   1%|          | 1/129 [00:57<2:03:28, 57.88s/it, loss=0.923, v_num=5.86e+7]Epoch 0:   2%|▏         | 2/129 [01:00<1:03:35, 30.04s/it, loss=0.923, v_num=5.86e+7]Epoch 0:   2%|▏         | 2/129 [01:00<1:03:35, 30.05s/it, loss=0.916, v_num=5.86e+7]Epoch 0:   2%|▏         | 3/129 [01:02<43:36, 20.77s/it, loss=0.916, v_num=5.86e+7]  Epoch 0:   2%|▏         | 3/129 [01:02<43:36, 20.77s/it, loss=0.909, v_num=5.86e+7]Epoch 0:   3%|▎         | 4/129 [01:04<33:48, 16.23s/it, loss=0.909, v_num=5.86e+7]Epoch 0:   3%|▎         | 4/129 [01:04<33:48, 16.23s/it, loss=0.902, v_num=5.86e+7]Epoch 0:   4%|▍         | 5/129 [01:42<42:12, 20.42s/it, loss=0.902, v_num=5.86e+7]Epoch 0:   4%|▍         | 5/129 [01:42<42:12, 20.42s/it, loss=0.901, v_num=5.86e+7]Epoch 0:   5%|▍         | 6/129 [01:44<35:38, 17.39s/it, loss=0.901, v_num=5.86e+7]Epoch 0:   5%|▍         | 6/129 [01:44<35:38, 17.39s/it, loss=0.897, v_num=5.86e+7]Epoch 0:   5%|▌         | 7/129 [01:46<30:56, 15.22s/it, loss=0.897, v_num=5.86e+7]Epoch 0:   5%|▌         | 7/129 [01:46<30:56, 15.22s/it, loss=0.896, v_num=5.86e+7]Epoch 0:   6%|▌         | 8/129 [01:48<27:25, 13.60s/it, loss=0.896, v_num=5.86e+7]Epoch 0:   6%|▌         | 8/129 [01:48<27:25, 13.60s/it, loss=0.893, v_num=5.86e+7]Epoch 0:   7%|▋         | 9/129 [02:17<30:34, 15.29s/it, loss=0.893, v_num=5.86e+7]Epoch 0:   7%|▋         | 9/129 [02:17<30:34, 15.29s/it, loss=0.893, v_num=5.86e+7]Epoch 0:   8%|▊         | 10/129 [02:19<27:43, 13.98s/it, loss=0.893, v_num=5.86e+7]Epoch 0:   8%|▊         | 10/129 [02:19<27:43, 13.98s/it, loss=0.891, v_num=5.86e+7]Epoch 0:   9%|▊         | 11/129 [02:22<25:23, 12.91s/it, loss=0.891, v_num=5.86e+7]Epoch 0:   9%|▊         | 11/129 [02:22<25:23, 12.91s/it, loss=0.889, v_num=5.86e+7]Epoch 0:   9%|▉         | 12/129 [02:24<23:26, 12.02s/it, loss=0.889, v_num=5.86e+7]Epoch 0:   9%|▉         | 12/129 [02:24<23:26, 12.02s/it, loss=0.886, v_num=5.86e+7]Epoch 0:  10%|█         | 13/129 [02:46<24:44, 12.79s/it, loss=0.886, v_num=5.86e+7]Epoch 0:  10%|█         | 13/129 [02:46<24:44, 12.80s/it, loss=0.884, v_num=5.86e+7]Epoch 0:  11%|█         | 14/129 [02:48<23:04, 12.04s/it, loss=0.884, v_num=5.86e+7]Epoch 0:  11%|█         | 14/129 [02:48<23:04, 12.04s/it, loss=0.883, v_num=5.86e+7]Epoch 0:  12%|█▏        | 15/129 [02:50<21:37, 11.38s/it, loss=0.883, v_num=5.86e+7]Epoch 0:  12%|█▏        | 15/129 [02:50<21:37, 11.38s/it, loss=0.882, v_num=5.86e+7]Epoch 0:  12%|█▏        | 16/129 [02:52<20:21, 10.81s/it, loss=0.882, v_num=5.86e+7]Epoch 0:  12%|█▏        | 16/129 [02:52<20:21, 10.81s/it, loss=0.879, v_num=5.86e+7]Epoch 0:  13%|█▎        | 17/129 [03:13<21:11, 11.35s/it, loss=0.879, v_num=5.86e+7]Epoch 0:  13%|█▎        | 17/129 [03:13<21:11, 11.35s/it, loss=0.877, v_num=5.86e+7]Epoch 0:  14%|█▍        | 18/129 [03:22<20:48, 11.25s/it, loss=0.877, v_num=5.86e+7]Epoch 0:  14%|█▍        | 18/129 [03:22<20:48, 11.25s/it, loss=0.874, v_num=5.86e+7]Epoch 0:  15%|█▍        | 19/129 [03:24<19:44, 10.77s/it, loss=0.874, v_num=5.86e+7]Epoch 0:  15%|█▍        | 19/129 [03:24<19:44, 10.77s/it, loss=0.873, v_num=5.86e+7]Epoch 0:  16%|█▌        | 20/129 [03:26<18:47, 10.34s/it, loss=0.873, v_num=5.86e+7]Epoch 0:  16%|█▌        | 20/129 [03:26<18:47, 10.34s/it, loss=0.871, v_num=5.86e+7]slurmstepd: error: *** JOB 58601231 ON c0800a-s17 CANCELLED AT 2023-02-28T13:23:47 DUE TO TIME LIMIT ***

@@ -2,7 +2,12 @@
 
 ### This repo is for practicing using our workflow.
 
+## Branch-specific setup on HiPerGator (banks only)
 
+For HiPerGator, create a conda environment from hpg-environment.yml using `conda env create --file=hpg-environment.yml`.
+This should create an environment called `hpg`. It may take a while (and it uses `pip`, sorry!) but it should eventually work.
+This is the environment that should be used in the training script (currently `training.sh`).
+*Note to self: Might or might not put the environment in the right place, gotta double check after removing prefix*
 
 ## Setup:
 
