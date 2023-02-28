@@ -1,0 +1,50 @@
+Tue Feb 28 12:53:58 EST 2023
+c0800a-s17.ufhpc
+/blue/banks/zachary.gerbi/Gator-Bones
+wandb: Currently logged in as: zachary-gerbi. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.13.10
+wandb: Run data is saved locally in /blue/banks/zachary.gerbi/Gator-Bones/wandb/run-20230228_125421-q0c6uvtw
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 2023-02-28-12-54-19
+wandb: ⭐️ View project at https://wandb.ai/zachary-gerbi/Segmentation%20Trial
+wandb: 🚀 View run at https://wandb.ai/zachary-gerbi/Segmentation%20Trial/runs/q0c6uvtw
+The Trainer argument `auto_select_gpus` has been deprecated in v1.9.0 and will be removed in v2.0.0. Please use the function `pytorch_lightning.accelerators.find_usable_cuda_devices` instead.
+Auto select gpus: [0]
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA A100-SXM4-80GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [3]
+
+  | Name    | Type       | Params
+---------------------------------------
+0 | seg_net | Swin_UNETR | 6.3 M 
+1 | loss_fn | DiceLoss   | 0     
+---------------------------------------
+6.3 M     Trainable params
+0         Non-trainable params
+6.3 M     Total params
+25.209    Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+Is cuda available?
+True
+['/blue/banks/zachary.gerbi/Gator-Bones/scripts', '/home/zachary.gerbi/.conda/envs/hpg/lib/python39.zip', '/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9', '/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9/lib-dynload', '/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9/site-packages', '/scratch/local/58599285/tmps81f4no6', '/blue/banks/zachary.gerbi/Gator-Bones/config/', '/blue/banks/zachary.gerbi/Gator-Bones/scripts/../models']
+Type of net selected: swin_unetr
+Net is on device -1
+Is this net on GPU? False
+Net is on device 0
+Net on GPU? True
+********************  Starting Fitting!  ********************
+Sanity Checking: 0it [00:00, ?it/s]
+********************  Starting Validation!  ********************
+
+Sanity Checking:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:13<00:13, 13.94s/it]Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:23<00:00, 11.50s/it]
+********************  Finished Validation!  ********************
+
+***************Min Validation Loss is 0.9131217002868652
+                                                                           ********************  Starting Training!  ********************
+Training: 0it [00:00, ?it/s]
+********************Starting train epoch 0!********************
+
+Training:   0%|          | 0/258 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/258 [00:00<?, ?it/s] Epoch 0:   0%|          | 1/258 [00:52<3:44:50, 52.49s/it]Epoch 0:   0%|          | 1/258 [00:52<3:44:50, 52.49s/it, loss=0.923, v_num=5.86e+7]Epoch 0:   1%|          | 2/258 [00:54<1:56:39, 27.34s/it, loss=0.923, v_num=5.86e+7]Epoch 0:   1%|          | 2/258 [00:54<1:56:39, 27.34s/it, loss=0.918, v_num=5.86e+7]Epoch 0:   1%|          | 3/258 [00:56<1:20:33, 18.96s/it, loss=0.918, v_num=5.86e+7]Epoch 0:   1%|          | 3/258 [00:56<1:20:33, 18.96s/it, loss=0.913, v_num=5.86e+7]Epoch 0:   2%|▏         | 4/258 [00:59<1:02:30, 14.77s/it, loss=0.913, v_num=5.86e+7]Epoch 0:   2%|▏         | 4/258 [00:59<1:02:31, 14.77s/it, loss=0.903, v_num=5.86e+7]Epoch 0:   2%|▏         | 5/258 [01:25<1:12:12, 17.13s/it, loss=0.903, v_num=5.86e+7]Epoch 0:   2%|▏         | 5/258 [01:25<1:12:12, 17.13s/it, loss=0.901, v_num=5.86e+7]Epoch 0:   2%|▏         | 6/258 [01:28<1:01:41, 14.69s/it, loss=0.901, v_num=5.86e+7]Epoch 0:   2%|▏         | 6/258 [01:28<1:01:41, 14.69s/it, loss=0.899, v_num=5.86e+7]Epoch 0:   3%|▎         | 7/258 [01:30<53:58, 12.90s/it, loss=0.899, v_num=5.86e+7]  Epoch 0:   3%|▎         | 7/258 [01:30<53:58, 12.90s/it, loss=0.898, v_num=5.86e+7]Epoch 0:   3%|▎         | 8/258 [01:32<48:10, 11.56s/it, loss=0.898, v_num=5.86e+7]Epoch 0:   3%|▎         | 8/258 [01:32<48:11, 11.56s/it, loss=0.894, v_num=5.86e+7]Epoch 0:   3%|▎         | 9/258 [01:58<54:45, 13.19s/it, loss=0.894, v_num=5.86e+7]Epoch 0:   3%|▎         | 9/258 [01:58<54:45, 13.19s/it, loss=0.892, v_num=5.86e+7]Epoch 0:   4%|▍         | 10/258 [02:00<49:59, 12.09s/it, loss=0.892, v_num=5.86e+7]Epoch 0:   4%|▍         | 10/258 [02:00<49:59, 12.09s/it, loss=0.892, v_num=5.86e+7]Epoch 0:   4%|▍         | 11/258 [02:03<46:04, 11.19s/it, loss=0.892, v_num=5.86e+7]Epoch 0:   4%|▍         | 11/258 [02:03<46:04, 11.19s/it, loss=0.887, v_num=5.86e+7]Epoch 0:   5%|▍         | 12/258 [02:05<42:48, 10.44s/it, loss=0.887, v_num=5.86e+7]Epoch 0:   5%|▍         | 12/258 [02:05<42:48, 10.44s/it, loss=0.884, v_num=5.86e+7]Epoch 0:   5%|▌         | 13/258 [02:32<47:56, 11.74s/it, loss=0.884, v_num=5.86e+7]Epoch 0:   5%|▌         | 13/258 [02:32<47:56, 11.74s/it, loss=0.881, v_num=5.86e+7]Epoch 0:   5%|▌         | 14/258 [02:34<44:58, 11.06s/it, loss=0.881, v_num=5.86e+7]Epoch 0:   5%|▌         | 14/258 [02:34<44:58, 11.06s/it, loss=0.88, v_num=5.86e+7] 

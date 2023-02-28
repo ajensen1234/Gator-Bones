@@ -15,6 +15,6 @@ date;hostname;pwd
 module load conda
 
 
-conda activate test
+conda activate hpg
 
 python scripts/fit.py config
