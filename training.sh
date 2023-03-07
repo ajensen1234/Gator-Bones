@@ -13,6 +13,8 @@
 date;hostname;pwd
 
 module load conda
+module load itk
+module load nvidia
 
 
 conda activate hpg
