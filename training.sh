@@ -7,7 +7,7 @@
 #SBATCH --mem-per-cpu=6gb
 #SBATCH --partition=hpg-ai
 #SBATCH --gpus-per-task=2
-#SBATCH --time=00:05:00
+#SBATCH --time=01:00:00
 #SBATCH --output=logs/%x.%j.out
 
 date;hostname;pwd
