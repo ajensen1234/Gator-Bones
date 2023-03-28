@@ -12,9 +12,9 @@ class Configuration:
             'MODEL_NAME': 'MyModel',
             'RUN_NAME': time.strftime('%Y-%m-%d-%H-%M-%S'),
             'WANDB_RUN_GROUP': 'Local',
-            'FAST_DEV_RUN': True,  # Runs inputted batches (True->1) and disables logging and some callbacks
-            'MAX_EPOCHS': 1,
-            'MAX_STEPS': 2,    # -1 means it will do all steps and be limited by epochs
+            'FAST_DEV_RUN': False,  # Runs inputted batches (True->1) and disables logging and some callbacks
+            'MAX_EPOCHS': 20,
+            'MAX_STEPS': -1,    # -1 means it will do all steps and be limited by epochs
             'STRATEGY': None    # This is the training strategy. Should be 'ddp' for multi-GPU (like HPG)
         }
         self.etl = {
@@ -42,24 +42,38 @@ class Configuration:
         }
         # segmentation_net_module needs to be below dataset because it uses dataset['IMG_CHANNELS']
         self.segmentation_net_module = {
-                'NUM_KEY_POINTS': 1,
-                'NUM_IMG_CHANNELS': self.dataset['IMG_CHANNELS']
+            'NUM_KEY_POINTS': 1,
+            'NUM_IMG_CHANNELS': self.dataset['IMG_CHANNELS']
+        }
+
+        self.swin_unetr_module = {
+            'IMG_SIZE': (1024,1024),
+            'IN_CHANNELS': 1,
+            'OUT_CHANNELS': 1,
+            'USE_CHECKPOINT': False,
+            'SPATIAL_DIMS': 2
+        }
+
+        self.model = {
+            'FEATURE_EXTRACTOR': 'pose_hrnet', # See models/feature_extractors
+            'HEAD': "pose_hrnet", # See models/nets
+            'LOSS': nn.BCEWithLogitsLoss(), # monai.losses.DiceLoss(sigmoid=True)
         }
 
         self.datamodule = {
             # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
-            'IMAGE_DIRECTORY': '/path/to/image/directory',
+            #'IMAGE_DIRECTORY': '../TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
+            'IMAGE_DIRECTORY': 'D:\TPLO_Ten_Dogs_grids', # C:\Users\gregg\Desktop\TPLO_Ten_Dogs_grids\TPLO_Ten_Dogs_grids
             # *** CHANGE THE CHECKPOINT PATH TO YOUR OWN FOR TESTING ***
-            #'CKPT_FILE': 'path/to/ckpt/file.ckpt',  # used when loading model from a checkpoint
-            'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
-            'BATCH_SIZE': 1,
+            'CKPT_FILE': '../TPLO_Ten_Dogs_grids/TestModel.ckpt',  # used when loading model from a checkpoint
+            # 'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
+            'BATCH_SIZE': 8,
             'SHUFFLE': True,        # Only for training, for test and val this is set in the datamodule script to False
-            'NUM_WORKERS': os.cpu_count(),   # This number seems fine for local but on HPG, we have so many cores that a number like 4 seems better.
-            'PIN_MEMORY': False,
+            'NUM_WORKERS': 4,   # This number seems fine for local but on HPG, we have so many cores that a number like 4 seems better.
+            'PIN_MEMORY': torch.cuda.is_available(),
             'SUBSET_PIXELS': True
         }
-
 
         # hyperparameters for training
         self.hparams = {

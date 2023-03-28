@@ -15,7 +15,7 @@ import torch
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
-from pose_hrnet_module import SegmentationNetModule, PoseHighResolutionNet
+from segmentation_net_module import SegmentationNetModule
 from datamodule import SegmentationDataModule
 #import click
 import sys
