@@ -3,10 +3,10 @@ import sys, os
 import torch
 import torch.nn as nn
 import numpy as np
-import monai
 import pytorch_lightning as pl
 import wandb
 from monai.inferers import sliding_window_inference
+
 class SegmentationNetModule(pl.LightningModule):
     def __init__(self, config, wandb_run, learning_rate=1e-3):
     #def __init__(self, pose_hrnet, learning_rate=1e-3):
@@ -16,7 +16,7 @@ class SegmentationNetModule(pl.LightningModule):
 
         sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'models'))
         print(sys.path)
-	 #import models relative path
+	    #import models relative path
         from ModelManager import ModelManager
         self.model_manager = ModelManager(config)
 

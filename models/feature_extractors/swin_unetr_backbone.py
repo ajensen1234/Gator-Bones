@@ -6,12 +6,15 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
-from monai.networks.blocks import MLPBlock as Mlp
-from monai.networks.blocks import PatchEmbed, UnetOutBlock, UnetrBasicBlock, UnetrUpBlock
-from monai.networks.layers import DropPath, trunc_normal_
-from monai.networks.nets.swin_unetr import rearrange
-from monai.utils import ensure_tuple_rep, look_up_option, optional_import
 from torch.nn import LayerNorm
+
+import sys
+sys.path.append("..") # Needed to avoid relative import error. Can be fixed with setup script
+
+from modules.swin_modules import MLPBlock as Mlp
+from modules.swin_modules import PatchEmbed, UnetOutBlock, UnetrBasicBlock, UnetrUpBlock
+from einops import rearrange
+from modules.swin_modules import ensure_tuple_rep, look_up_option
 
 
 __all__ = [
