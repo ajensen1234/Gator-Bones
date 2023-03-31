@@ -1,0 +1,25 @@
+Fri Mar 31 13:31:20 EDT 2023
+c1104a-s23.ufhpc
+/blue/banks/zachary.gerbi/Gator-Bones
+ln: failed to create symbolic link ‘/home/zachary.gerbi/.conda/envs/hpg/share/gdb/auto-load//home/zachary.gerbi/.conda/envs/hpg/lib/libarrow.so.1100.0.0-gdb.py’: No space left on device
+There was a problem when trying to write in your cache folder (/home/zachary.gerbi/.cache/huggingface/hub). You should set the environment variable TRANSFORMERS_CACHE to a writable directory.
+In the future `np.bool` will be defined as the corresponding NumPy scalar.
+In the future `np.bool` will be defined as the corresponding NumPy scalar.
+In the future `np.bool` will be defined as the corresponding NumPy scalar.
+In the future `np.bool` will be defined as the corresponding NumPy scalar.
+In the future `np.object` will be defined as the corresponding NumPy scalar.
+In the future `np.object` will be defined as the corresponding NumPy scalar.
+Traceback (most recent call last):
+  File "/blue/banks/zachary.gerbi/Gator-Bones/scripts/fit.py", line 84, in <module>
+    config_module = import_module(sys.argv[1])
+  File "/home/zachary.gerbi/.conda/envs/hpg/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/blue/banks/zachary.gerbi/Gator-Bones/config/config.py", line 3, in <module>
+    import albumentations as A
+ModuleNotFoundError: No module named 'albumentations'

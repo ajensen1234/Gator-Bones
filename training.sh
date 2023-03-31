@@ -13,7 +13,7 @@ date;hostname;pwd
 module load conda
 
 
-conda activate gatorBones
+conda activate hpg
 
 # Run a tutorial python script within the container. Modify the path to your container and your script.
 python scripts/fit.py config
