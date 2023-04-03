@@ -16,7 +16,7 @@ class Swin_UNETR(nn.Module):
             print("Swin_unetr head called without pose_hrnet backbone, changing backbone to swin_unetr")
             self.config.model['FEATURE_EXTRACTOR'] = 'swin_unetr'
 
-        self.backbone = ExtractorSelector(config).get_feature_extractor()
+        self.backbone = ExtractorSelector(config, feature_extractor="swin_unetr").get_feature_extractor()
 
     def forward(self, x_):
         x = self.backbone(x_)

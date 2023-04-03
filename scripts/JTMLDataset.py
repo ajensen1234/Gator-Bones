@@ -30,7 +30,7 @@ class LitJTMLDataset(Dataset):
         """
         # Create local copies of the arguments
         self.config = config
-        self.num_points = self.config.dataset['NUM_KEY_POINTS']
+        self.num_points = self.config.segmentation_net_module['NUM_KEY_POINTS']
         self.transform = self.config.transform
         
         # Check that evaluation_type is valid and then store
@@ -105,17 +105,19 @@ class LitJTMLDataset(Dataset):
         seg_label = torch.FloatTensor(seg_label[None, :, :])
         #kp_label = torch.FloatTensor(kp_label.reshape(-1))      # Reshape to 1D array so that it's 2*num_keypoints long
         kp_label = torch.FloatTensor(kp_label)          # kp_label is of shape (num_keypoints, 2)
-        assert kp_label.shape == (self.num_points, 2), "Keypoint label shape is incorrect!"
+        
         #print("kp_label.shape:")
         #print(kp_label.shape)
 
         # * Create a dictionary of the sample
-        sample = {'image': image,
-                    'img_name': image_name,
-                    'kp_label': kp_label,
-                    'seg_label': seg_label,
-                    'full_image': full_image,
-                    'image_no_transform': image_no_transform}
+        # sample = {'image': image,
+        #             'img_name': image_name,
+        #             'kp_label': kp_label,
+        #             'seg_label': seg_label,
+        #             'full_image': full_image,
+        #             'image_no_transform': image_no_transform}
+        
+        sample = {'image': image, 'label': seg_label, 'img_name': image_name}
 
         # * Return the sample
         return sample

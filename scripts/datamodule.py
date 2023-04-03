@@ -76,14 +76,11 @@ class SegmentationDataModule(pl.LightningDataModule):
         """
 
         self.training_set = LitJTMLDataset(config=self.config,
-                                            dataset=self.train_set,
-                                            img_dir=self.img_dir)
+                                           evaluation_type="train")
         self.validation_set = LitJTMLDataset(config=self.config,
-                                            dataset=self.val_set,
-                                            img_dir=self.img_dir)
+                                            evaluation_type="val")
         self.test_set = LitJTMLDataset(config=self.config,
-                                            dataset=self.test_set,
-                                            img_dir=self.img_dir)
+                                            evaluation_type="test")
 
         return
 
