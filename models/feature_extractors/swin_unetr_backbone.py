@@ -15,6 +15,7 @@ from modules.swin_modules import MLPBlock as Mlp
 from modules.swin_modules import PatchEmbed, UnetOutBlock, UnetrBasicBlock, UnetrUpBlock
 from einops import rearrange
 from modules.swin_modules import ensure_tuple_rep, look_up_option
+from monai.networks.layers import DropPath, trunc_normal_
 
 
 __all__ = [
@@ -289,7 +290,7 @@ class SwinTransformerBlock(nn.Module):
         self.drop_path = DropPath(drop_path) if drop_path > 0.0 else nn.Identity()
         self.norm2 = norm_layer(dim)
         mlp_hidden_dim = int(dim * mlp_ratio)
-        self.mlp = Mlp(hidden_size=dim, mlp_dim=mlp_hidden_dim, act=act_layer, dropout_rate=drop, dropout_mode="swin")
+        self.mlp = Mlp(hidden_size=dim, mlp_dim=mlp_hidden_dim, act=act_layer, dropout_rate=drop)
 
     def forward_part1(self, x, mask_matrix):
         x_shape = x.size()

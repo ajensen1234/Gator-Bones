@@ -1,6 +1,7 @@
 from __future__ import annotations
 from collections.abc import Sequence
 
+import torch
 import torch.nn as nn
 from torch.nn import LayerNorm
 import torch.nn.functional as F
@@ -267,6 +268,13 @@ class UnetrUpBlock(nn.Module):
                 stride=1,
                 norm_name=norm_name,
             )
+
+    def forward(self, inp, skip):
+        # number of channels for skip should equals to out_channels
+        out = self.transp_conv(inp)
+        out = torch.cat((out, skip), dim=1)
+        out = self.conv_block(out)
+        return out
 
 
 class DropPath(nn.Module):

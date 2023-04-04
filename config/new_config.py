@@ -12,10 +12,10 @@ class Configuration:
             'MODEL_NAME': 'MyModel',
             'RUN_NAME': time.strftime('%Y-%m-%d-%H-%M-%S'),
             'WANDB_RUN_GROUP': 'Local',
-            'FAST_DEV_RUN': True,  # Runs inputted batches (True->1) and disables logging and some callbacks
-            'MAX_EPOCHS': 1,
-            'MAX_STEPS': 2,    # -1 means it will do all steps and be limited by epochs
-            'STRATEGY': None    # This is the training strategy. Should be 'ddp' for multi-GPU (like HPG)
+            'FAST_DEV_RUN': False,  # Runs inputted batches (True->1) and disables logging and some callbacks
+            'MAX_EPOCHS': 100,
+            'MAX_STEPS': -1,    # -1 means it will do all steps and be limited by epochs
+            'STRATEGY': 'ddp'    # This is the training strategy. Should be 'ddp' for multi-GPU (like HPG)
         }
         self.etl = {
             'RAW_DATA_FILE': -1,    # -1 means it will create a full data csv from the image directory, using all images in the image directory
@@ -48,17 +48,32 @@ class Configuration:
                 'NUM_IMG_CHANNELS': self.dataset['IMG_CHANNELS']
         }
 
+        self.swin_unetr_module = {
+            'IMG_SIZE': (1024,1024),
+            'IN_CHANNELS': 1,
+            'OUT_CHANNELS': 1,
+            'USE_CHECKPOINT': False,
+            'SPATIAL_DIMS': 2
+        }
+
+        self.model = {
+            'FEATURE_EXTRACTOR': 'swin_unetr', # See models/feature_extractors
+            'HEAD': "swin_unetr", # See models/nets
+            'LOSS': nn.BCEWithLogitsLoss(), # monai.losses.DiceLoss(sigmoid=True)
+        }
+
         self.datamodule = {
             # *** CHANGE THE IMAGE DIRECTORY TO YOUR OWN ***
             #'IMAGE_DIRECTORY': '/media/sasank/LinuxStorage/Dropbox (UFL)/Canine Kinematics Data/TPLO_Ten_Dogs_grids',
-            'IMAGE_DIRECTORY': '/path/to/image/directory',
+            'IMAGE_DIRECTORY': '/blue/banks/jiayu.huang/TPLO_Ten_Dogs_grids',
             # *** CHANGE THE CHECKPOINT PATH TO YOUR OWN FOR TESTING ***
             #'CKPT_FILE': 'path/to/ckpt/file.ckpt',  # used when loading model from a checkpoint
             'CKPT_FILE': None,  # used when loading model from a checkpoint, such as in testing
             'BATCH_SIZE': 1,
             'SHUFFLE': True,        # Only for training, for test and val this is set in the datamodule script to False
-            'NUM_WORKERS': os.cpu_count(),   # This number seems fine for local but on HPG, we have so many cores that a number like 4 seems better.
-            'PIN_MEMORY': False
+            'NUM_WORKERS': 4,   # This number seems fine for local but on HPG, we have so many cores that a number like 4 seems better.
+            'PIN_MEMORY': False,
+            'SUBSET_PIXELS': True
         }
 
 
@@ -70,14 +85,15 @@ class Configuration:
 
         self.transform = \
         A.Compose([
-        A.RandomGamma(always_apply=False, p = 0.5,gamma_limit=(10,300)),
-        A.ShiftScaleRotate(always_apply = False, p = 0.5,shift_limit=(-0.06, 0.06), scale_limit=(-0.1, 0.1), rotate_limit=(-180,180), interpolation=0, border_mode=0, value=(0, 0, 0)),
-        A.Blur(always_apply=False, blur_limit=(3, 10), p=0.2),
-        A.Flip(always_apply=False, p=0.5),
-        A.ElasticTransform(always_apply=False, p=0.85, alpha=0.5, sigma=150, alpha_affine=50.0, interpolation=0, border_mode=0, value=(0, 0, 0), mask_value=None, approximate=False),
-        A.InvertImg(always_apply=False, p=0.5),
-        A.CoarseDropout(always_apply = False, p = 0.25, min_holes = 1, max_holes = 100, min_height = 25, max_height=25),
-        A.MultiplicativeNoise(always_apply=False, p=0.25, multiplier=(0.1, 2), per_channel=True, elementwise=True)
-    ],
+        A.RandomGamma(always_apply=False, p = 0.5,gamma_limit=(50,250)),
+        A.ShiftScaleRotate(always_apply=False, p=0.5, shift_limit=(-0.02, 0.02), 
+                            scale_limit=(-0.05, 0.05), rotate_limit=(-5, 5), 
+                            interpolation=0, border_mode=0, value=(0, 0, 0)),
+        A.Blur(always_apply=False, blur_limit=(2, 5), p=0.2),
+        A.CoarseDropout(always_apply=False, p=0.25, min_holes=1, max_holes=10, 
+                        min_height=25, max_height=25),
+        A.MultiplicativeNoise(always_apply=False, p=0.25, multiplier=(0.9, 1.1), 
+                              per_channel=True, elementwise=True)
+        ],
     keypoint_params=A.KeypointParams(format='xy', remove_invisible=False),
     p=0.85)
