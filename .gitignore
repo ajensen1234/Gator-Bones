@@ -7,3 +7,5 @@ lightning_logs/*
 wandb/*
 *.nsys-rep
 *.sqlite
+*.pyc
+*.out
