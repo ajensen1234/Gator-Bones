@@ -1,0 +1,74 @@
+Mon Apr 10 22:20:10 EDT 2023
+c1003a-s35.ufhpc
+/blue/banks/jiayu.huang/GatorBones
+wandb: Currently logged in as: peter6866 (miller-lab). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.14.2 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.10
+wandb: Run data is saved locally in /blue/banks/jiayu.huang/GatorBones/wandb/run-20230410_222133-eqvri8qa
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 2023-04-10-22-21-31
+wandb: ⭐️ View project at https://wandb.ai/miller-lab/Segmentation%20Trial
+wandb: 🚀 View run at https://wandb.ai/miller-lab/Segmentation%20Trial/runs/eqvri8qa
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+['/blue/banks/jiayu.huang/GatorBones/scripts', '/home/jiayu.huang/.conda/envs/JTML/lib/python39.zip', '/home/jiayu.huang/.conda/envs/JTML/lib/python3.9', '/home/jiayu.huang/.conda/envs/JTML/lib/python3.9/lib-dynload', '/home/jiayu.huang/.local/lib/python3.9/site-packages', '/home/jiayu.huang/.conda/envs/JTML/lib/python3.9/site-packages', '/scratch/local/61528177/tmp4c_gxqc7', '/blue/banks/jiayu.huang/GatorBones/config/', '/blue/banks/jiayu.huang/GatorBones/scripts/../models']
+Type of net selected: swin_unetr
+Net is on device -1
+Is this net on GPU? False
+Net is on device 0
+Net on GPU? True
+Checkpoint file loaded from /blue/banks/jiayu.huang/GatorBones/checkpoints/200_fem.ckpt
+2023-04-10 22:21:47,961 - Added key: store_based_barrier_key:1 to store for rank: 0
+2023-04-10 22:21:47,961 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+You are using a CUDA device ('NVIDIA A100-SXM4-80GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+Using `DistributedSampler` with the dataloaders. During `trainer.test()`, it is recommended to use `Trainer(devices=1, num_nodes=1)` to ensure each sample/batch gets evaluated exactly once. Otherwise, multi-device settings use `DistributedSampler` that replicates some samples to make sure all devices have same batch size in case of uneven inputs.
+********************  Starting Testing!  ********************
+Testing: 0it [00:00, ?it/s]Testing:   0%|          | 0/92 [00:00<?, ?it/s]Testing DataLoader 0:   0%|          | 0/92 [00:00<?, ?it/s]Testing DataLoader 0:   1%|          | 1/92 [00:06<10:22,  6.84s/it]Testing DataLoader 0:   2%|▏         | 2/92 [00:07<05:42,  3.80s/it]Testing DataLoader 0:   3%|▎         | 3/92 [00:08<04:06,  2.77s/it]Testing DataLoader 0:   4%|▍         | 4/92 [00:08<03:17,  2.24s/it]Testing DataLoader 0:   5%|▌         | 5/92 [00:09<02:47,  1.93s/it]Testing DataLoader 0:   7%|▋         | 6/92 [00:10<02:27,  1.71s/it]Testing DataLoader 0:   8%|▊         | 7/92 [00:10<02:11,  1.55s/it]Testing DataLoader 0:   9%|▊         | 8/92 [00:11<02:01,  1.44s/it]Testing DataLoader 0:  10%|▉         | 9/92 [00:12<01:54,  1.38s/it]Testing DataLoader 0:  11%|█         | 10/92 [00:13<01:47,  1.32s/it]Testing DataLoader 0:  12%|█▏        | 11/92 [00:13<01:42,  1.26s/it]Testing DataLoader 0:  13%|█▎        | 12/92 [00:14<01:37,  1.22s/it]Testing DataLoader 0:  14%|█▍        | 13/92 [00:15<01:33,  1.18s/it]Testing DataLoader 0:  15%|█▌        | 14/92 [00:16<01:29,  1.15s/it]Testing DataLoader 0:  16%|█▋        | 15/92 [00:17<01:27,  1.14s/it]Testing DataLoader 0:  17%|█▋        | 16/92 [00:17<01:25,  1.12s/it]Testing DataLoader 0:  18%|█▊        | 17/92 [00:18<01:22,  1.10s/it]Testing DataLoader 0:  20%|█▉        | 18/92 [00:19<01:19,  1.08s/it]Testing DataLoader 0:  21%|██        | 19/92 [00:20<01:17,  1.06s/it]Testing DataLoader 0:  22%|██▏       | 20/92 [00:20<01:15,  1.05s/it]Testing DataLoader 0:  23%|██▎       | 21/92 [00:22<01:16,  1.07s/it]Testing DataLoader 0:  24%|██▍       | 22/92 [00:23<01:15,  1.07s/it]Testing DataLoader 0:  25%|██▌       | 23/92 [00:24<01:12,  1.06s/it]Testing DataLoader 0:  26%|██▌       | 24/92 [00:25<01:10,  1.04s/it]Testing DataLoader 0:  27%|██▋       | 25/92 [00:25<01:08,  1.03s/it]Testing DataLoader 0:  28%|██▊       | 26/92 [00:26<01:06,  1.01s/it]Testing DataLoader 0:  29%|██▉       | 27/92 [00:26<01:04,  1.00it/s]Testing DataLoader 0:  30%|███       | 28/92 [00:27<01:03,  1.02it/s]Testing DataLoader 0:  32%|███▏      | 29/92 [00:28<01:01,  1.02it/s]Testing DataLoader 0:  33%|███▎      | 30/92 [00:28<00:59,  1.03it/s]Testing DataLoader 0:  34%|███▎      | 31/92 [00:29<00:58,  1.05it/s]Testing DataLoader 0:  35%|███▍      | 32/92 [00:30<00:56,  1.06it/s]Testing DataLoader 0:  36%|███▌      | 33/92 [00:30<00:55,  1.07it/s]Testing DataLoader 0:  37%|███▋      | 34/92 [00:31<00:54,  1.07it/s]Testing DataLoader 0:  38%|███▊      | 35/92 [00:32<00:52,  1.08it/s]Testing DataLoader 0:  39%|███▉      | 36/92 [00:33<00:51,  1.09it/s]Testing DataLoader 0:  40%|████      | 37/92 [00:33<00:50,  1.10it/s]Testing DataLoader 0:  41%|████▏     | 38/92 [00:34<00:48,  1.11it/s]Testing DataLoader 0:  42%|████▏     | 39/92 [00:35<00:47,  1.11it/s]Testing DataLoader 0:  43%|████▎     | 40/92 [00:35<00:46,  1.12it/s]Testing DataLoader 0:  45%|████▍     | 41/92 [00:36<00:45,  1.13it/s]Testing DataLoader 0:  46%|████▌     | 42/92 [00:37<00:44,  1.13it/s]Testing DataLoader 0:  47%|████▋     | 43/92 [00:37<00:43,  1.13it/s]Testing DataLoader 0:  48%|████▊     | 44/92 [00:38<00:42,  1.13it/s]Testing DataLoader 0:  49%|████▉     | 45/92 [00:39<00:41,  1.14it/s]Testing DataLoader 0:  50%|█████     | 46/92 [00:40<00:40,  1.14it/s]Testing DataLoader 0:  51%|█████     | 47/92 [00:41<00:39,  1.14it/s]Testing DataLoader 0:  52%|█████▏    | 48/92 [00:41<00:38,  1.15it/s]Testing DataLoader 0:  53%|█████▎    | 49/92 [00:42<00:37,  1.15it/s]Testing DataLoader 0:  54%|█████▍    | 50/92 [00:43<00:36,  1.16it/s]Testing DataLoader 0:  55%|█████▌    | 51/92 [00:44<00:35,  1.16it/s]Testing DataLoader 0:  57%|█████▋    | 52/92 [00:44<00:34,  1.16it/s]Testing DataLoader 0:  58%|█████▊    | 53/92 [00:45<00:33,  1.17it/s]Testing DataLoader 0:  59%|█████▊    | 54/92 [00:46<00:32,  1.17it/s]Testing DataLoader 0:  60%|█████▉    | 55/92 [00:46<00:31,  1.18it/s]Testing DataLoader 0:  61%|██████    | 56/92 [00:47<00:30,  1.18it/s]Testing DataLoader 0:  62%|██████▏   | 57/92 [00:48<00:29,  1.18it/s]Testing DataLoader 0:  63%|██████▎   | 58/92 [00:49<00:28,  1.18it/s]Testing DataLoader 0:  64%|██████▍   | 59/92 [00:49<00:27,  1.18it/s]Testing DataLoader 0:  65%|██████▌   | 60/92 [00:50<00:27,  1.19it/s]Testing DataLoader 0:  66%|██████▋   | 61/92 [00:51<00:26,  1.19it/s]Testing DataLoader 0:  67%|██████▋   | 62/92 [00:51<00:25,  1.19it/s]Testing DataLoader 0:  68%|██████▊   | 63/92 [00:52<00:24,  1.20it/s]Testing DataLoader 0:  70%|██████▉   | 64/92 [00:53<00:23,  1.19it/s]Testing DataLoader 0:  71%|███████   | 65/92 [00:54<00:22,  1.18it/s]Testing DataLoader 0:  72%|███████▏  | 66/92 [00:55<00:21,  1.19it/s]Testing DataLoader 0:  73%|███████▎  | 67/92 [00:56<00:20,  1.19it/s]Testing DataLoader 0:  74%|███████▍  | 68/92 [00:56<00:20,  1.19it/s]Testing DataLoader 0:  75%|███████▌  | 69/92 [00:57<00:19,  1.20it/s]Testing DataLoader 0:  76%|███████▌  | 70/92 [00:58<00:18,  1.20it/s]Testing DataLoader 0:  77%|███████▋  | 71/92 [00:59<00:17,  1.20it/s]Testing DataLoader 0:  78%|███████▊  | 72/92 [00:59<00:16,  1.20it/s]Testing DataLoader 0:  79%|███████▉  | 73/92 [01:00<00:15,  1.20it/s]Testing DataLoader 0:  80%|████████  | 74/92 [01:01<00:15,  1.20it/s]Testing DataLoader 0:  82%|████████▏ | 75/92 [01:02<00:14,  1.20it/s]Testing DataLoader 0:  83%|████████▎ | 76/92 [01:03<00:13,  1.20it/s]Testing DataLoader 0:  84%|████████▎ | 77/92 [01:04<00:12,  1.20it/s]Testing DataLoader 0:  85%|████████▍ | 78/92 [01:04<00:11,  1.21it/s]Testing DataLoader 0:  86%|████████▌ | 79/92 [01:05<00:10,  1.21it/s]Testing DataLoader 0:  87%|████████▋ | 80/92 [01:06<00:10,  1.20it/s]Testing DataLoader 0:  88%|████████▊ | 81/92 [01:07<00:09,  1.19it/s]Testing DataLoader 0:  89%|████████▉ | 82/92 [01:08<00:08,  1.19it/s]Testing DataLoader 0:  90%|█████████ | 83/92 [01:09<00:07,  1.20it/s]Testing DataLoader 0:  91%|█████████▏| 84/92 [01:10<00:06,  1.20it/s]Testing DataLoader 0:  92%|█████████▏| 85/92 [01:10<00:05,  1.20it/s]Testing DataLoader 0:  93%|█████████▎| 86/92 [01:11<00:05,  1.20it/s]Testing DataLoader 0:  95%|█████████▍| 87/92 [01:12<00:04,  1.20it/s]Testing DataLoader 0:  96%|█████████▌| 88/92 [01:13<00:03,  1.20it/s]Testing DataLoader 0:  97%|█████████▋| 89/92 [01:13<00:02,  1.20it/s]Testing DataLoader 0:  98%|█████████▊| 90/92 [01:14<00:01,  1.21it/s]Testing DataLoader 0:  99%|█████████▉| 91/92 [01:15<00:00,  1.21it/s]Testing DataLoader 0: 100%|██████████| 92/92 [01:16<00:00,  1.20it/s]********************Finished test epoch 0!********************
+********************  Finished Testing!  ********************
+Testing DataLoader 0: 100%|██████████| 92/92 [01:16<00:00,  1.20it/s]wandb: Waiting for W&B process to finish... (success).
+wandb: - 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: \ 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: | 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: / 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: - 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: \ 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: | 78.199 MB of 82.755 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:                test/loss ▂▁▂▂▂▁▁▂▂▂▃▄▂▃▄▆▄▂▃▄▃▃▁▄▂▃▆▂▃█▁▄▃▄▂▃▂▂▃▂
+wandb:          test_metrics/FN ▃▂▆▁▃▄▂▃▂▄▆▃▂▃▄▅▅▄▅▆▄▄▃▂▄▅█▃██▃▅▂▄▂▃▃▂▃▄
+wandb:         test_metrics/FNR ▁▂▆▁▁▂▁▃▁▃▄▂▁▂▃▄▅▂▄▅▃▄▂▂▄▅▇▃▆█▃▄▁▄▁▃▄▁▃▄
+wandb:          test_metrics/FP ▃▂▁▅▃▁▂▃▄▂▂▅▃▃▄▇▃▂▃▂▃▄▂█▂▂▄▃▁█▂▃▄▅▄▃▃▃▄▁
+wandb:     test_metrics/Fallout ▃▂▁▅▃▁▂▃▄▂▂▅▃▃▄▇▃▂▃▂▃▄▂█▂▂▄▃▁█▂▃▄▅▄▃▃▃▄▁
+wandb:         test_metrics/IOU ██▆▆███▆▇▇▇▆█▆▆▄▆▇▆▆▇▅█▅▇▆▄▇▆▁▇▆▇▅▇▆▆█▆▇
+wandb:         test_metrics/JAC ██▆▆███▆▇▇▇▆█▆▆▄▆▇▆▆▇▅█▅▇▆▄▇▆▁▇▆▇▅▇▆▆█▆▇
+wandb:         test_metrics/PPV ▇▇█▄▇█▇▆▅▇█▅▇▆▆▃▆▇▆▇▇▅█▃▇▆▅▇█▁▇▆▆▅▆▅▆▇▅▇
+wandb:      test_metrics/Recall █▇▃██▇█▆█▆▅▇█▇▆▅▄▇▅▄▆▅▇▇▅▄▂▆▃▁▆▅█▅█▆▅█▆▅
+wandb: test_metrics/Specificity ▆▇█▄▆█▇▆▅▇▇▄▆▆▅▂▆▇▆▇▆▅▇▁▇▇▅▆█▁▇▆▅▄▅▆▆▆▅█
+wandb:          test_metrics/TN ▁▆▇█▂▄▆▇▅▄▃▅▂▆▅▆▇▄▆▆▅▇▃▄▆▇▇▆▄▇▇▆▃▅▄▇▇▂█▇
+wandb:          test_metrics/TP █▃▂▁▇▅▃▂▄▅▆▄▇▃▄▃▂▅▃▃▄▂▆▅▃▂▂▃▅▂▂▃▆▄▅▂▂▇▁▂
+wandb:       test_metrics/Union █▃▂▁▇▅▃▂▄▅▆▅▇▃▄▄▃▅▃▄▄▂▆▅▃▂▂▃▅▂▂▃▆▄▅▂▂▇▂▂
+wandb: 
+wandb: Run summary:
+wandb:                     INFO Finished Testing!
+wandb:                test/loss 0.00186
+wandb:          test_metrics/FN 642
+wandb:         test_metrics/FNR 0.01545
+wandb:          test_metrics/FP 227
+wandb:     test_metrics/Fallout 0.00023
+wandb:         test_metrics/IOU 0.97921
+wandb:         test_metrics/JAC 0.97921
+wandb:         test_metrics/PPV 0.99448
+wandb:      test_metrics/Recall 0.98455
+wandb: test_metrics/Specificity 0.99977
+wandb:          test_metrics/TN 1007655
+wandb:          test_metrics/TP 40921
+wandb:       test_metrics/Union 41790
+wandb: 
+wandb: 🚀 View run 2023-04-10-22-21-31 at: https://wandb.ai/miller-lab/Segmentation%20Trial/runs/eqvri8qa
+wandb: Synced 6 W&B file(s), 552 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230410_222133-eqvri8qa/logs
+

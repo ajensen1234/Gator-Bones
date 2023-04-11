@@ -94,8 +94,13 @@ class LitJTMLDataset(Dataset):
             label_normed = cv2.normalize(seg_label, label_dst, alpha = 0, beta = 1, norm_type = cv2.NORM_MINMAX)
             seg_label = label_normed
 
-            kernel = np.ones((30,30), np.uint8)
-            label_dilated = cv2.dilate(seg_label, kernel, iterations = 5)
+            random_kernel_size = (np.random.randint(10, 50), np.random.randint(10, 50))  # Generate random kernel size
+            kernel = np.ones(random_kernel_size, np.uint8)
+
+            # Generate a random number of iterations within a specific range
+            random_iterations = np.random.randint(1, 11)
+
+            label_dilated = cv2.dilate(seg_label, kernel, iterations = random_iterations)
             image_subsetted = cv2.multiply(label_dilated, image)
             image = image_subsetted
 

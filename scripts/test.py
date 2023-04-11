@@ -61,8 +61,8 @@ def main(config, wandb_run):
     trainer = pl.Trainer(
         # If the below line gives an error because you don't have a GPU, then comment it out and uncomment the line after it which uses the CPU.
         # accelerator='gpu',
-        accelerator='cpu',
-        devices=1,     # use all available devices (GPUs)
+        accelerator='gpu',
+        devices=-1,     # use all available devices (GPUs)
         # Probably comment out the below line if you're using your CPU.
         # auto_select_gpus=True,  # helps use all GPUs, not quite understood...
         #logger=wandb_logger,

@@ -95,6 +95,7 @@ if __name__ == '__main__':
 
     # Creating the Wandb run object
     wandb_run = wandb.init(
+        reinit=True,
         project=config.init['PROJECT_NAME'],    # Leave the same for the project (e.g. JTML_seg)
         name=config.init['RUN_NAME'],           # Should be diff every time to avoid confusion (e.g. current time)
         group=config.init['WANDB_RUN_GROUP'],
