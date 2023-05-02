@@ -4,9 +4,42 @@ import albumentations as A
 import numpy as np
 import time
 import os
+"""
+Class Configuration:
 
+Inputs:
+None
+
+Outputs:
+A configuration object that contains various parameters for a segmentation trial
+
+Rationale:
+This class defines the configuration parameters for a segmentation trial, such as initialization, etl, dataset, model, datamodule and hyperparameters. 
+It helps to organize and standardize the settings for different experiments.
+
+Future:
+This class can be extended to include more parameters or options for different models, tasks, or datasets. 
+It can also be modified to load or save the configuration from or to a file.
+"""
 class Configuration:
+    """
+    __init__
+
+    Inputs:
+    None
+
+    Outputs:
+    None
+
+    Rationale:
+    This method initializes the configuration object with some default values for each parameter group.
+
+    Future:
+    This method can be extended to take arguments from the command line or a file to override the default values. 
+    It can also be modified to validate the values or handle exceptions.
+    """
     def __init__(self):
+        
         self.init = {
             'PROJECT_NAME': 'Segmentation Trial',
             'MODEL_NAME': 'MyModel',
@@ -17,6 +50,7 @@ class Configuration:
             'MAX_STEPS': -1,    # -1 means it will do all steps and be limited by epochs
             'STRATEGY': 'ddp'    # This is the training strategy. Should be 'ddp' for multi-GPU (like HPG)
         }
+        # This is a dictionary that stores the etl (extract, transform, load) parameters
         self.etl = {
             'RAW_DATA_FILE': -1,    # -1 means it will create a full data csv from the image directory, using all images in the image directory
             #'RAW_DATA_FILE': 'my_data.csv',
@@ -30,16 +64,17 @@ class Configuration:
             'CUSTOM_TEST_SET': False,
             'TEST_SET_NAME': '/my/test/set.csv'
         }
-
+        # This is a dictionary that stores the dataset parameters
         self.dataset = {
-            'DATA_NAME': 'Ten_Dogs_64KP',
-            'IMAGE_HEIGHT': 1024,
-            'IMAGE_WIDTH': 1024,
+            
+            'DATA_NAME': 'Ten_Dogs_64KP',# Name of the Dataset
+            'IMAGE_HEIGHT': 1024, # Height of the images in pixels
+            'IMAGE_WIDTH': 1024, # Width of the images in pixels
             'MODEL_TYPE': 'fem',        # specifies that it's a femur model. how should we do this? not clear this is still best...
             'CLASS_LABELS': {0: 'bone', 1: 'background'},
             'IMG_CHANNELS': 1,      # Is this differnt from self.module['NUM_IMAGE_CHANNELS']
             'IMAGE_THRESHOLD': 0,
-            'USE_ALBUMENTATIONS': True,
+            'USE_ALBUMENTATIONS': True, # Enables or disables the use of Data Augmentation
             'SUBSET_PIXELS': True
         }
         # segmentation_net_module needs to be below dataset because it uses dataset['IMG_CHANNELS']
