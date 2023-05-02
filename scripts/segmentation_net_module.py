@@ -6,10 +6,47 @@ import numpy as np
 import pytorch_lightning as pl
 import wandb
 from monai.inferers import sliding_window_inference
+"""
+Class SegmentationNetModule
 
+Inputs:
+config: a Configuration object that contains various parameters for a segmentation trial
+wandb_run: a wandb Run object that represents the current run
+learning_rate: a float that represents the learning rate for the optimizer
+
+Outputs:
+None
+
+Rationale:
+This class inherits from pl.LightningModule and defines the segmentation model, 
+the loss function and the training and validation steps.
+It helps to train and evaluate the segmentation model using pytorch-lightning and wandb.
+
+Future:
+This class can be extended to include more metrics or callbacks for monitoring the performance.
+It can also be modified to support different models or loss functions.
+"""
 class SegmentationNetModule(pl.LightningModule):
-    def __init__(self, config, wandb_run, learning_rate=1e-3):
-    #def __init__(self, pose_hrnet, learning_rate=1e-3):
+    	"""
+    	__init__
+
+    	Inputs:
+    	config: a Configuration object that contains various parameters for a segmentation trial
+    	wandb_run: a wandb Run object that represents the current run
+    	learning_rate: a float that represents the learning rate for the optimizer
+
+    	Outputs:
+    	None
+
+    	Rationale:
+    	This method initializes the SegmentationNetModule object with the given config, wandb_run and learning_rate.
+    	It also imports and creates the segmentation model from the ModelManager class and sets the device and loss function.
+    	Future:
+    	This method can be extended to take more arguments or options for initializing the segmentation model. It could include additional
+	options for more complicated tasks such as multi class segmentation, or multiple instance segmentation.
+    	"""
+	def __init__(self, config, wandb_run, learning_rate=1e-3):
+    	#def __init__(self, pose_hrnet, learning_rate=1e-3):
         super().__init__()
         self.save_hyperparameters("learning_rate")
         self.config = config
@@ -52,7 +89,23 @@ class SegmentationNetModule(pl.LightningModule):
         #optimizer = torch.optim.Adam(self.parameters, lr=1e-3)
         optimizer = torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
         return optimizer
+    """
+    training_step
 
+    Inputs:
+    train_batch: a dictionary that contains a batch of input images and labels for training
+    batch_idx: an integer that represents the index of the current batch
+
+    Outputs:
+    loss: a torch.Tensor that represents the loss value for the current batch
+
+    Rationale:
+    This method performs a training step on the current batch using the segmentation model and the loss function loaded from config. 
+    It also logs the loss value to wandb.
+    Future:
+    This method can be extended to include more metrics or callbacks for monitoring the training performance. 
+    It can also be modified to use different optimizers or learning rate schedulers.
+    """
     def training_step(self, train_batch, batch_idx):
         training_batch, training_batch_labels = train_batch['image'], train_batch['label']
         x = training_batch
@@ -64,7 +117,24 @@ class SegmentationNetModule(pl.LightningModule):
         self.wandb_run.log({'train/loss': loss})
         #self.log(name="train/loss", value=loss)
         return loss
+    """
+    validation_step
 
+    Inputs:
+    validation_batch: a dictionary that contains a batch of input images and labels for validation
+    batch_idx: an integer that represents the index of the current batch
+
+    Outputs:
+    loss: a torch.Tensor that represents the loss value for the current batch
+
+    Rationale:
+    This method performs a validation step on the current batch using the segmentation model and the loss function. It also logs the loss value and an image of the validation output to wandb. 
+    It uses sliding window inference to handle large input images. Further research might be needed for use case of sliding window inference.
+    In monai tutorials for swinUNETR they use sliding window inference, and it doesn't seem to worsen performance.
+    Future:
+    This method can be extended to include more metrics or callbacks for monitoring the validation performance.
+    It can also be modified to use different inference methods or parameters.
+    """
     def validation_step(self, validation_batch, batch_idx):
         val_batch, val_batch_labels = validation_batch['image'], validation_batch['label']
         x = val_batch
@@ -81,7 +151,23 @@ class SegmentationNetModule(pl.LightningModule):
         image = wandb.Image(val_output, caption='Validation output')
         self.wandb_run.log({'val_output': image})
         return loss
+    """
+    test_step
 
+    Inputs:
+    test_batch: a dictionary that contains a batch of input images and labels for testing
+    batch_idx: an integer that represents the index of the current batch
+
+    Outputs:
+    loss: a torch.Tensor that represents the loss value for the current batch
+
+    Rationale:
+    This method performs a test step on the current batch using the segmentation model and the loss function. 
+    It also logs the loss value to wandb.
+    Future:
+    This method can be extended to include more metrics or callbacks for monitoring the test performance. 
+    It can also be modified to save or visualize the test output.
+    """
     def test_step(self, test_batch, batch_idx):
         test_batch, test_batch_labels = test_batch['image'], test_batch['label']
         x = test_batch
