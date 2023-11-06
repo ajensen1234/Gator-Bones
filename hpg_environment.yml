@@ -1,4 +1,4 @@
-name: hpg
+name: jtml_swin_env
 channels:
   - conda-forge
   - bioconda

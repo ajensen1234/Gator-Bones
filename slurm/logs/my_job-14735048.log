@@ -1,0 +1,16 @@
+Date      = Mon Nov  6 15:45:55 EST 2023
+host      = c1109a-s17
+Directory = /home/ajensen123/blue/JTML/Gator-Bones
+wandb: ERROR api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+Traceback (most recent call last):
+  File "/blue/banks/ajensen123/JTML/Gator-Bones/./scripts/fit.py", line 97, in <module>
+    wandb_run = wandb.init(
+  File "/blue/banks/ajensen123/JTML/envs/jtml_swin_env/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1129, in init
+    wi.setup(kwargs)
+  File "/blue/banks/ajensen123/JTML/envs/jtml_swin_env/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 274, in setup
+    wandb_login._login(
+  File "/blue/banks/ajensen123/JTML/envs/jtml_swin_env/lib/python3.9/site-packages/wandb/sdk/wandb_login.py", line 298, in _login
+    wlogin.prompt_api_key()
+  File "/blue/banks/ajensen123/JTML/envs/jtml_swin_env/lib/python3.9/site-packages/wandb/sdk/wandb_login.py", line 228, in prompt_api_key
+    raise UsageError("api_key not configured (no-tty). call " + directive)
+wandb.errors.UsageError: api_key not configured (no-tty). call wandb.login(key=[your_api_key])
